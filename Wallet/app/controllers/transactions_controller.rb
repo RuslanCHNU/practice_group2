@@ -1,11 +1,16 @@
 # app/controllers/transactions_controller.rb
 
 class TransactionsController < ApplicationController
+    # def index
+    #   @transactions = Transaction.all
+    #   @new_transaction = Transaction.new
+    # end
+  
     def index
-      @transactions = Transaction.all
+      @transactions = Transaction.order(date: :desc)
       @new_transaction = Transaction.new
     end
-  
+
     def create
       @transaction = Transaction.new(transaction_params)
       if @transaction.save
